@@ -1,5 +1,6 @@
 import 'package:anx_reader/dao/base_dao.dart';
 import 'package:anx_reader/dao/book.dart';
+import 'package:anx_reader/dao/reading_round.dart';
 import 'package:anx_reader/enums/sync_direction.dart';
 import 'package:anx_reader/enums/sync_trigger.dart';
 import 'package:anx_reader/models/book.dart';
@@ -22,8 +23,9 @@ class ReadingTimeDao extends BaseDao {
 
     await db.transaction((txn) async {
       final existing = await txn.rawQuery(
-        'SELECT id, reading_time FROM $table WHERE book_id = ? AND DATE(date) = DATE(?) LIMIT 1',
-        [readingTime.bookId, resolvedDay],
+        'SELECT id, reading_time FROM $table '
+        'WHERE book_id = ? AND DATE(date) = DATE(?) AND round = ? LIMIT 1',
+        [readingTime.bookId, resolvedDay, readingTime.round],
       );
 
       if (existing.isNotEmpty) {
@@ -44,21 +46,33 @@ class ReadingTimeDao extends BaseDao {
             'book_id': readingTime.bookId,
             'date': resolvedDay,
             'reading_time': readingTime.readingTime,
+            'round': readingTime.round,
           },
         );
       }
     });
+
+    // 同步把本次时长累加到该书进行中的轮次（多刷统计）
+    if (readingTime.readingTime > 0) {
+      await readingRoundDao.accumulateReadingTime(
+        bookId: readingTime.bookId,
+        roundNumber: readingTime.round,
+        seconds: readingTime.readingTime,
+      );
+    }
   }
 
   Future<void> insertReadingSession({
     required int bookId,
     required int readingTime,
     DateTime? startedAt,
+    int round = 1,
   }) async {
     final session = ReadingTime(
       bookId: bookId,
       readingTime: readingTime,
       date: startedAt?.toIso8601String(),
+      round: round,
     );
 
     await insertReadingTime(session, startedAt: startedAt);
@@ -291,6 +305,30 @@ class ReadingTimeDao extends BaseDao {
       mapper: (row) => row['total_sum'] as int? ?? 0,
     );
     return total ?? 0;
+  }
+
+  /// 某本书某一轮次的累计阅读时长（秒）
+  Future<int> selectTotalReadingTimeByBookAndRound(
+      int bookId, int round) async {
+    final total = await rawQuerySingle(
+      'SELECT SUM(reading_time) AS total_sum FROM $table '
+      'WHERE book_id = ? AND round = ?',
+      arguments: [bookId, round],
+      mapper: (row) => row['total_sum'] as int? ?? 0,
+    );
+    return total ?? 0;
+  }
+
+  /// 某本书某一轮次的阅读记录明细
+  Future<List<ReadingTime>> selectReadingTimeByBookAndRound(
+      int bookId, int round) {
+    return queryList(
+      table,
+      mapper: ReadingTime.fromDb,
+      where: 'book_id = ? AND round = ?',
+      whereArgs: [bookId, round],
+      orderBy: 'datetime(date) DESC, id DESC',
+    );
   }
 
   Future<List<Map<Book, int>>> selectBookReadingTimeOfDay(DateTime date) async {

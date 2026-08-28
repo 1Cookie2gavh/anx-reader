@@ -286,7 +286,9 @@ class BookBottomSheet extends ConsumerWidget {
 
     return Container(
       padding: const EdgeInsets.all(20),
-      height: 100,
+      // 内容区至少需要容纳 60px 高的操作按钮（IconAndText），
+      // 原 100px 高度在 debug 模式会出现 BOTTOM OVERFLOWED BY 4.0
+      height: 110,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

@@ -36,8 +36,13 @@ Anx Reader, a thoughtfully crafted e-book reader for book lovers. Featuring powe
 | Custom Reading Experience | Tune letter, line, paragraph, and margin spacing<br>Adjust font size, style, and weight<br>Customize themes, backgrounds, alignment, and styles | ✅ |
 | Notes Workspace | Multiple color/style presets<br>Sort by time or chapter with color filters<br>Export to TXT/Markdown/CSV<br>Create shareable, well-designed cards | ✅ |
 | Reading Insights | Track reading time<br>View daily/weekly/monthly/yearly stats<br>Visual heatmap reveals reading habits | ✅ |
+| Multiple Reading Rounds | Track reading time & progress per round (1st/2nd/3rd read…)<br>One-tap "Finish Round" snapshots stats and resets progress for the next round<br>Visual per-round history on the book detail page (with undo protection) | ✅ |
 | Advanced Extras | TTS with multi-voice, speed, tone, and sleep timer controls<br>Full-book translation with side-by-side view<br>Store books in the cloud and download on demand<br>One-tap simplified/traditional Chinese conversion | ✅ |
 | OPDS Catalogs | Built-in OPDS support with custom catalog management | 🛠️ In progress |
+
+> ### 🍴 Fork Note (1Cookie2gavh/anx-reader)
+> - This fork adds the **Multiple Reading Rounds** feature on top of upstream: after finishing a book you can start a 2nd/3rd read; each round independently records reading time, progress range and timeline, with one-tap finish/undo, synced across devices via WebDAV.
+> - **⚠️ Android build not published yet**: the code supports Android, but only Windows artifacts are released here. To build the APK, set up the Android SDK and run `flutter build apk --release` (see the Build section). Suggested next steps: Android SDK setup, APK release, iOS/macOS builds and store publishing.
 
 
 <table border="1">

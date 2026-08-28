@@ -151,6 +151,8 @@ dependency_overrides:
       url: https://github.com/Anxcye/langchain_dart.git
       ref: 310fb6b3
       path: packages/langchain_anthropic
+  # 锁定 googleai_dart 3.0.0：langchain_google 0.7.1+2 依赖 ApiException.code（3.6.0 已移除该 API）
+  googleai_dart: 3.0.0
 #  analyzer: ^8.0.0
 
 
