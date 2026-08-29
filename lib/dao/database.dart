@@ -13,7 +13,9 @@ import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // Current app database version
-const int currentDbVersion = 8;
+// 注意：fork 使用高位版本号（100）做版本避让——官方版本号短期内不会到达该值，
+// 避免与官方未来的 schema 版本（如官方 v8）使用同名 database*.db 造成"同名不同构"的静默冲突。
+const int currentDbVersion = 100;
 
 const createBookSQL = '''
 CREATE TABLE tb_books (

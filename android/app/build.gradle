@@ -31,7 +31,8 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "com.anxcye.anx_reader"
     // compileSdk flutter.compileSdkVersion
-    compileSdk 35
+    // 36: 插件依赖（androidx.browser/core 等）要求 compileSdk 36
+    compileSdk 36
     ndkVersion flutter.ndkVersion
 
     compileOptions {
