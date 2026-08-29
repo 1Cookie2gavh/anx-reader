@@ -42,7 +42,9 @@ Anx Reader, a thoughtfully crafted e-book reader for book lovers. Featuring powe
 
 > ### 🍴 Fork Note (1Cookie2gavh/anx-reader)
 > - This fork adds the **Multiple Reading Rounds** feature on top of upstream: after finishing a book you can start a 2nd/3rd read; each round independently records reading time, progress range and timeline, with one-tap finish/undo, synced across devices via WebDAV.
-> - **⚠️ Android build not published yet**: the code supports Android, but only Windows artifacts are released here. To build the APK, set up the Android SDK and run `flutter build apk --release` (see the Build section). Suggested next steps: Android SDK setup, APK release, iOS/macOS builds and store publishing.
+> - **Built platforms**: Windows x64 (portable zip) and **Android (APK)**, both available on [Releases](https://github.com/1Cookie2gavh/anx-reader/releases).
+> - **Not built**: iOS/macOS (requires a Mac + Xcode, no current plan).
+> - Note: this fork uses a high database version (100) to avoid colliding with upstream's schema; builds of this fork are NOT data-compatible with official releases. Keep all devices on this fork's builds and back up data before switching back to official.
 
 
 <table border="1">

@@ -33,7 +33,9 @@ Anx Reader，一款为热爱阅读的你精心打造的电子书阅读器。集�
 
 > ### 🍴 本 Fork 说明（1Cookie2gavh/anx-reader）
 > - 在上游基础上**新增「多刷阅读统计」功能**：读完一本书后可开启二刷、三刷，每一轮独立记录阅读时长、起止进度与时间线，支持一键完成本轮/撤销，数据随 WebDAV 全平台同步。
-> - **⚠️ 尚未构建 Android 版本**：本仓库代码支持 Android，但当前仅发布 Windows 构建产物。有意者可按下方「构建」章节配置 Android SDK 后执行 `flutter build apk --release` 产出安卓安装包（后续可做事项：Android SDK 环境搭建、APK 发布、iOS/macOS 构建与上架）。
+> - **已构建平台**：Windows x64（zip 解压即用）与 **Android（APK）**，均可在 [Releases](https://github.com/1Cookie2gavh/anx-reader/releases) 下载。
+> - **未构建平台**：iOS/macOS（需 Mac + Xcode，暂无计划）。
+> - 说明：数据库版本号使用高位避让（100），与官方版本数据文件互不兼容，请保持各设备均使用本 fork 构建；正式升级官方版本前请先备份数据。
 
 <table border="1">
   <tr>
