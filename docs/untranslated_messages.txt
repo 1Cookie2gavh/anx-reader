@@ -19,7 +19,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "de": [
@@ -42,7 +57,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "es": [
@@ -65,7 +95,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "fr": [
@@ -88,7 +133,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "it": [
@@ -111,7 +171,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "ja": [
@@ -134,7 +209,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "ko": [
@@ -157,7 +247,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "pt": [
@@ -180,7 +285,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "ro": [
@@ -203,7 +323,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "ru": [
@@ -226,7 +361,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "tr": [
@@ -249,7 +399,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "zh": [
@@ -258,7 +423,22 @@
     "settingsAiProviderReasoningEffortAuto",
     "settingsAiProviderReasoningEffortLow",
     "settingsAiProviderReasoningEffortMedium",
-    "settingsAiProviderReasoningEffortHigh"
+    "settingsAiProviderReasoningEffortHigh",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "zh_LZH": [
@@ -281,7 +461,22 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ],
 
   "zh_TW": [
@@ -304,6 +499,21 @@
     "settingsAdvancedHttpProxyTest",
     "settingsAdvancedHttpProxyTesting",
     "settingsAdvancedHttpProxyTestSuccess",
-    "settingsAdvancedHttpProxyTestFailed"
+    "settingsAdvancedHttpProxyTestFailed",
+    "readingRoundsSectionTitle",
+    "readingRoundsCurrentRound",
+    "readingRoundsInProgress",
+    "readingRoundsFinished",
+    "readingRoundsNth",
+    "readingRoundsDuration",
+    "readingRoundsProgress",
+    "readingRoundsFinishAndStartNext",
+    "readingRoundsUndo",
+    "readingRoundsConfirmTitle",
+    "readingRoundsConfirmContent",
+    "readingRoundsConfirmOk",
+    "readingRoundsFinishedToast",
+    "readingRoundsUndoToast",
+    "readingRoundsEmpty"
   ]
 }
