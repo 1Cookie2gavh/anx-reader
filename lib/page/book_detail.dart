@@ -18,6 +18,7 @@ import 'package:anx_reader/utils/date/convert_seconds.dart';
 import 'package:anx_reader/utils/get_path/get_base_path.dart';
 import 'package:anx_reader/utils/log/common.dart';
 import 'package:anx_reader/utils/color/hash_color.dart';
+import 'package:anx_reader/widgets/book_review/book_review_card.dart';
 import 'package:anx_reader/widgets/bookshelf/book_cover.dart';
 import 'package:anx_reader/widgets/common/async_skeleton_wrapper.dart';
 import 'package:anx_reader/widgets/common/container/filled_container.dart';
@@ -710,7 +711,9 @@ class _BookDetailState extends ConsumerState<BookDetail> {
     Widget buildMoreDetail() {
       Widget buildReadingDetail() {
         return FutureBuilder<List<ReadingTime>>(
-          future: readingTimeDao.selectReadingTimeByBookId(widget.book.id),
+          // 按日期汇总（合并同一天的多个轮次），避免多刷后出现重复日期
+          future:
+              readingTimeDao.selectDailyTotalReadingTimeByBookId(widget.book.id),
           builder: (BuildContext context,
               AsyncSnapshot<List<ReadingTime>> snapshot) {
             if (snapshot.hasData) {
@@ -838,6 +841,10 @@ class _BookDetailState extends ConsumerState<BookDetail> {
                                       book: _book,
                                       onRoundFinished: _handleRoundFinished,
                                     ),
+                                    BookReviewCard(
+                                      bookId: _book.id,
+                                      bookTitle: _book.title,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -863,6 +870,10 @@ class _BookDetailState extends ConsumerState<BookDetail> {
                               ReadingRoundsCard(
                                 book: _book,
                                 onRoundFinished: _handleRoundFinished,
+                              ),
+                              BookReviewCard(
+                                bookId: _book.id,
+                                bookTitle: _book.title,
                               ),
                               const SizedBox(height: 15),
                               buildMoreDetail(),

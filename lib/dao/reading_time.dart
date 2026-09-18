@@ -240,6 +240,29 @@ class ReadingTimeDao extends BaseDao {
     );
   }
 
+  /// 某本书**按日期汇总**的阅读时长（把该书当天的所有轮次合并成一条）。
+  ///
+  /// 多刷功能使 tb_reading_time 的聚合键变为 (书, 日期, 轮次)，同一天读过
+  /// 多轮就会有多条记录；书籍详情页的时长列表应按日期合并显示，避免出现
+  /// 重复日期。逐轮明细由 tb_reading_rounds / 轮次卡片负责展示。
+  Future<List<ReadingTime>> selectDailyTotalReadingTimeByBookId(int bookId) {
+    return rawQueryList(
+      '''
+      SELECT DATE(date) AS day, SUM(reading_time) AS total_time
+      FROM $table
+      WHERE book_id = ?
+      GROUP BY day
+      ORDER BY day DESC
+      ''',
+      arguments: [bookId],
+      mapper: (row) => ReadingTime(
+        bookId: bookId,
+        date: row['day'] as String?,
+        readingTime: row['total_time'] as int? ?? 0,
+      ),
+    );
+  }
+
   Future<List<ReadingTime>> queryReadingHistory({
     int? bookId,
     DateTime? from,

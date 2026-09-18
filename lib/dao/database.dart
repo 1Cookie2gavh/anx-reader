@@ -13,9 +13,10 @@ import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // Current app database version
-// 注意：fork 使用高位版本号（100）做版本避让——官方版本号短期内不会到达该值，
-// 避免与官方未来的 schema 版本（如官方 v8）使用同名 database*.db 造成"同名不同构"的静默冲突。
-const int currentDbVersion = 100;
+// 注意：fork 使用高位版本号（100 起）做版本避让——官方版本号短期内不会到达该值，
+// 避免与官方未来的 schema 版本使用同名 database*.db 造成"同名不同构"的静默冲突。
+// v100：多刷阅读统计；v101：书籍备注/书评
+const int currentDbVersion = 101;
 
 const createBookSQL = '''
 CREATE TABLE tb_books (
@@ -453,6 +454,11 @@ class DBHelper {
             "ALTER TABLE tb_books ADD COLUMN current_round INTEGER NOT NULL DEFAULT 1");
         await db.execute(
             "ALTER TABLE tb_reading_time ADD COLUMN round INTEGER NOT NULL DEFAULT 1");
+        continue case100;
+      case100:
+      case 100:
+        // 书籍备注/书评：tb_books 增加 review 列（允许为空，未填写时为 NULL）
+        await db.execute("ALTER TABLE tb_books ADD COLUMN review TEXT");
     }
 
     if (oldVersion != 0 && Prefs().webdavStatus) {

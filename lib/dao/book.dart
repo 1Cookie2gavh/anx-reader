@@ -116,6 +116,45 @@ class BookDao extends BaseDao {
     );
   }
 
+  /// 仅更新轮次号（多刷功能专用）。
+  /// 单独维护可避免其他代码路径用较早加载的 Book 实例整行覆盖，
+  /// 导致轮次号被回退。
+  Future<void> updateCurrentRound(int bookId, int round) {
+    return update(
+      table,
+      {
+        'current_round': round,
+        'update_time': DateTime.now().toIso8601String(),
+      },
+      where: 'id = ?',
+      whereArgs: [bookId],
+    );
+  }
+
+  /// 仅更新书籍备注/书评（支持 Markdown；传入空字符串即清空）。
+  /// 同样单独维护，避免被较早加载的 Book 实例整行覆盖。
+  Future<void> updateReview(int bookId, String? review) {
+    return update(
+      table,
+      {
+        'review': review ?? '',
+        'update_time': DateTime.now().toIso8601String(),
+      },
+      where: 'id = ?',
+      whereArgs: [bookId],
+    );
+  }
+
+  /// 读取书籍备注/书评（未填写或字段为空时返回空字符串）
+  Future<String> selectReview(int bookId) async {
+    final value = await rawQuerySingle<String>(
+      'SELECT review FROM $table WHERE id = ?',
+      arguments: [bookId],
+      mapper: (row) => row['review'] as String? ?? '',
+    );
+    return value ?? '';
+  }
+
   Future<List<Book>> getBooksWithoutMd5() {
     return queryList(
       table,

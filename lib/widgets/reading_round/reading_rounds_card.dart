@@ -15,7 +15,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///
 /// 展示当前轮次状态、已完成轮次的历史统计，并提供
 /// 【完成本轮，开始下一刷】与【撤销】两个交互按钮。
-class ReadingRoundsCard extends ConsumerWidget {
+class ReadingRoundsCard extends ConsumerStatefulWidget {
   const ReadingRoundsCard({
     super.key,
     required this.book,
@@ -28,8 +28,16 @@ class ReadingRoundsCard extends ConsumerWidget {
   final ValueChanged<Book> onRoundFinished;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final roundsAsync = ref.watch(readingRoundsProvider(book.id));
+  ConsumerState<ReadingRoundsCard> createState() => _ReadingRoundsCardState();
+}
+
+class _ReadingRoundsCardState extends ConsumerState<ReadingRoundsCard> {
+  /// 防止按钮连点导致重复执行（完成/撤销）
+  bool _processing = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final roundsAsync = ref.watch(readingRoundsProvider(widget.book.id));
     return FilledContainer(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -37,13 +45,12 @@ class ReadingRoundsCard extends ConsumerWidget {
       child: AsyncSkeletonWrapper<List<ReadingRound>>(
         enabled: false,
         asyncValue: roundsAsync,
-        builder: (rounds, _) => _buildContent(context, ref, rounds),
+        builder: (rounds, _) => _buildContent(context, rounds),
       ),
     );
   }
 
-  Widget _buildContent(
-      BuildContext context, WidgetRef ref, List<ReadingRound> rounds) {
+  Widget _buildContent(BuildContext context, List<ReadingRound> rounds) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final finishedRounds = rounds.where((r) => r.isFinished).toList();
@@ -74,15 +81,23 @@ class ReadingRoundsCard extends ConsumerWidget {
           children: [
             Expanded(
               child: FilledButton.icon(
-                onPressed: () => _confirmFinishRound(context, ref),
-                icon: const Icon(Icons.restart_alt),
+                onPressed: _processing
+                    ? null
+                    : () => _confirmFinishRound(context),
+                icon: _processing
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.restart_alt),
                 label: Text(l10n.readingRoundsFinishAndStartNext),
               ),
             ),
             const SizedBox(width: 8),
             OutlinedButton.icon(
-              onPressed: book.currentRound > 1
-                  ? () => _undoLastRound(context, ref)
+              onPressed: (widget.book.currentRound > 1 && !_processing)
+                  ? () => _undoLastRound(context)
                   : null,
               icon: const Icon(Icons.undo),
               label: Text(l10n.readingRoundsUndo),
@@ -99,10 +114,11 @@ class ReadingRoundsCard extends ConsumerWidget {
     final theme = Theme.of(context);
     return FutureBuilder<int>(
       future: readingTimeDao.selectTotalReadingTimeByBookAndRound(
-          book.id, book.currentRound),
+          widget.book.id, widget.book.currentRound),
       builder: (context, snapshot) {
         final duration = convertSeconds(snapshot.data ?? 0);
-        final progress = (book.readingPercentage * 100).toStringAsFixed(1);
+        final progress =
+            (widget.book.readingPercentage * 100).toStringAsFixed(1);
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -114,7 +130,7 @@ class ReadingRoundsCard extends ConsumerWidget {
                 children: [
                   Text(
                     '${l10n.readingRoundsCurrentRound}：'
-                    '${l10n.readingRoundsNth('${book.currentRound}')} · '
+                    '${l10n.readingRoundsNth('${widget.book.currentRound}')} · '
                     '${l10n.readingRoundsInProgress}',
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(fontWeight: FontWeight.w600),
@@ -142,8 +158,9 @@ class ReadingRoundsCard extends ConsumerWidget {
     final startDate = (round.startTime?.length ?? 0) >= 10
         ? round.startTime!.substring(0, 10)
         : '?';
-    final endDate =
-        (round.endTime?.length ?? 0) >= 10 ? round.endTime!.substring(0, 10) : '?';
+    final endDate = (round.endTime?.length ?? 0) >= 10
+        ? round.endTime!.substring(0, 10)
+        : '?';
     final startPct = (round.startPercentage * 100).toStringAsFixed(0);
     final endPct = (round.endPercentage * 100).toStringAsFixed(0);
     return Padding(
@@ -180,7 +197,8 @@ class ReadingRoundsCard extends ConsumerWidget {
     );
   }
 
-  Future<void> _confirmFinishRound(BuildContext context, WidgetRef ref) async {
+  Future<void> _confirmFinishRound(BuildContext context) async {
+    if (_processing) return;
     final l10n = L10n.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
@@ -200,21 +218,38 @@ class ReadingRoundsCard extends ConsumerWidget {
       ),
     );
     if (confirmed != true) return;
+    if (!mounted) return;
 
-    final updated = await ReadingRoundService.finishCurrentRound(book);
-    if (!context.mounted) return;
-    ref.read(readingRoundsProvider(book.id).notifier).refresh();
-    onRoundFinished(updated);
-    AnxToast.show(l10n.readingRoundsFinishedToast(
-        '${updated.currentRound - 1}', '${updated.currentRound}'));
+    setState(() => _processing = true);
+    try {
+      final updated = await ReadingRoundService.finishCurrentRound(widget.book);
+      if (!mounted) return;
+      ref.read(readingRoundsProvider(widget.book.id).notifier).refresh();
+      widget.onRoundFinished(updated);
+      AnxToast.show(l10n.readingRoundsFinishedToast(
+          '${updated.currentRound - 1}', '${updated.currentRound}'));
+    } finally {
+      if (mounted) {
+        setState(() => _processing = false);
+      }
+    }
   }
 
-  Future<void> _undoLastRound(BuildContext context, WidgetRef ref) async {
+  Future<void> _undoLastRound(BuildContext context) async {
+    if (_processing) return;
     final l10n = L10n.of(context);
-    final updated = await ReadingRoundService.undoLastRound(book);
-    if (!context.mounted) return;
-    ref.read(readingRoundsProvider(book.id).notifier).refresh();
-    onRoundFinished(updated);
-    AnxToast.show(l10n.readingRoundsUndoToast('${updated.currentRound}'));
+
+    setState(() => _processing = true);
+    try {
+      final updated = await ReadingRoundService.undoLastRound(widget.book);
+      if (!mounted) return;
+      ref.read(readingRoundsProvider(widget.book.id).notifier).refresh();
+      widget.onRoundFinished(updated);
+      AnxToast.show(l10n.readingRoundsUndoToast('${updated.currentRound}'));
+    } finally {
+      if (mounted) {
+        setState(() => _processing = false);
+      }
+    }
   }
 }

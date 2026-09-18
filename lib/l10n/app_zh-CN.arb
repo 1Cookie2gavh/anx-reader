@@ -935,5 +935,18 @@
       "n": {"type": "String"}
     }
   },
-  "readingRoundsEmpty": "还没有已完成的轮次，读完首刷后即可开启二刷"
+  "readingRoundsEmpty": "还没有已完成的轮次，读完首刷后即可开启二刷",
+  "bookReviewSectionTitle": "备注 · 书评",
+  "bookReviewEmptyHint": "点击写下这本书的书评或备注（支持 Markdown 语法）",
+  "bookReviewEditorTitle": "编辑备注",
+  "bookReviewEditorHint": "写下你对这本书的想法……\n支持 Markdown：**加粗**、*斜体*、# 标题、- 列表、> 引用",
+  "bookReviewMarkdownHint": "支持 Markdown 语法；留空即删除备注",
+  "bookReviewPreviewMode": "预览",
+  "bookReviewEditMode": "编辑",
+  "bookReviewPreviewEmpty": "暂无可预览内容",
+  "bookReviewSaved": "备注已保存",
+  "bookReviewSaveFailed": "备注保存失败",
+  "bookReviewUnsavedTitle": "有未保存的修改",
+  "bookReviewUnsavedContent": "离开将丢失未保存的修改，确定离开吗？",
+  "bookReviewDiscard": "放弃修改"
 }
