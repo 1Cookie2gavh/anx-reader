@@ -44,6 +44,7 @@ Anx Reader, a thoughtfully crafted e-book reader for book lovers. Featuring powe
 > - This fork adds the **Multiple Reading Rounds** feature on top of upstream: after finishing a book you can start a 2nd/3rd read; each round independently records reading time, progress range and timeline, with one-tap finish/undo, synced across devices via WebDAV.
 > - **Built platforms**: Windows x64 (portable zip) and **Android (APK)**, both available on [Releases](https://github.com/1Cookie2gavh/anx-reader/releases).
 > - **Not built**: iOS/macOS (requires a Mac + Xcode, no current plan).
+> - **Windows packaging note**: release bundles must include the **VC++ runtime DLLs** (app-local deployment) and the **Microsoft Edge WebView2 runtime bootstrapper**; otherwise clean systems fail with "MSVCP140.dll / VCRUNTIME140.dll not found" or "WebView2 runtime not found". Run `pwsh scripts/copy_vcruntime_dlls.ps1` after each build (it downloads the bootstrapper from Microsoft when missing).
 > - Note: this fork uses a high database version (100) to avoid colliding with upstream's schema; builds of this fork are NOT data-compatible with official releases. Keep all devices on this fork's builds and back up data before switching back to official.
 
 

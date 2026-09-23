@@ -35,6 +35,7 @@ Anx Reader，一款为热爱阅读的你精心打造的电子书阅读器。集�
 > - 在上游基础上**新增「多刷阅读统计」功能**：读完一本书后可开启二刷、三刷，每一轮独立记录阅读时长、起止进度与时间线，支持一键完成本轮/撤销，数据随 WebDAV 全平台同步。
 > - **已构建平台**：Windows x64（zip 解压即用）与 **Android（APK）**，均可在 [Releases](https://github.com/1Cookie2gavh/anx-reader/releases) 下载。
 > - **未构建平台**：iOS/macOS（需 Mac + Xcode，暂无计划）。
+> - **Windows 打包注意**：发布包需包含 **VC++ 运行库 DLL**（应用本地部署）与 **Microsoft Edge WebView2 运行时引导程序**，否则在干净系统上会分别报「找不到 MSVCP140.dll / VCRUNTIME140.dll」或「未能找到已安装的 WebView2 运行时」。每次构建后执行 `pwsh scripts/copy_vcruntime_dlls.ps1` 即可自动补齐（引导程序缺失时会从微软官方地址下载）。
 > - 说明：数据库版本号使用高位避让（100），与官方版本数据文件互不兼容，请保持各设备均使用本 fork 构建；正式升级官方版本前请先备份数据。
 
 <table border="1">

@@ -71,3 +71,5 @@ google_service_account.json
 # FVM Version Cache
 .fvm/
 .fvmrc
+# 发布素材：WebView2 引导程序（构建时由脚本自动下载，不入库）
+scripts/packaging/*.exe
