@@ -3,7 +3,7 @@ description: "An e-book reader."
 publish_to: 'none'
 
 # fork 专属版本号：-fork.N 后缀用于与官方版本区分；每次自行发版递增 fork.N
-version: 1.15.0-fork.1+6324
+version: 1.15.0-fork.2+6325
 
 environment:
   sdk: '>=3.5.2 <4.0.0'
